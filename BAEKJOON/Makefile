@@ -1,0 +1,33 @@
+CC = gcc
+DEFAULT_OPTION = -c -o
+RESULT = main.exe
+
+OBJ_PATH = obj
+SRC_PATH = src
+INC_PATH = inc
+
+MAIN = main
+MAIN_OBJ = $(OBJ_PATH)\$(MAIN).o
+MAIN_SRC = $(MAIN).c
+
+TARGET = 10172
+TARGET_OBJ = $(OBJ_PATH)\$(TARGET).o
+TARGET_SRC = $(SRC_PATH)\$(TARGET).c
+TARGET_INC = $(INC_PATH)\$(TARGET).h
+
+RESULT_DEPENDENCY = $(TARGET_INC) $(MAIN_OBJ) $(TARGET_OBJ)
+
+# can't work 16-bit program in win11, so -m64 option add
+# need minGW 64bit in 64bit OS
+
+$(RESULT) : $(RESULT_DEPENDENCY)
+	$(CC) -o $(RESULT) $(RESULT_DEPENDENCY) -m64
+
+$(MAIN_OBJ) : $(TARGET_INC) $(MAIN_SRC)
+	$(CC) $(DEFAULT_OPTION) $(MAIN_OBJ) $(MAIN_SRC)
+
+$(TARGET_OBJ) : $(TARGET_INC) $(TARGET_SRC)
+	$(CC) $(DEFAULT_OPTION) $(TARGET_OBJ) $(TARGET_SRC)
+
+clean:
+	del /f $(OBJ_PATH)\*.o $(RESULT)

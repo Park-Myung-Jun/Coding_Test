@@ -1,0 +1,12 @@
+type : 파일 읽기
+fc : 파일 비교
+
+비교 문법
+IF variable1 [equ, neq, gtr, geq, leq, lss, ==] variable2
+==는 문자 비교에 사용
+
+IF DEFINED variable
+variable 존재 검토
+
+return 반환 문법
+return 0 == exit /b 0
