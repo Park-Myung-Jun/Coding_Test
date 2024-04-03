@@ -1,8 +1,8 @@
-#include "inc/2480.h"
+#include "inc/15552.h"
 
 int main(void)
 {
-	test_2480();
+	test_15552();
 
 	return 0;
 }
